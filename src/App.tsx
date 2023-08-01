@@ -1,5 +1,11 @@
+import { Routes } from "./config";
+
 function App() {
-  return <div>SpacersHackConf-2023</div>;
+  return (
+    <>
+      <Routes />
+    </>
+  );
 }
 
 export default App;
