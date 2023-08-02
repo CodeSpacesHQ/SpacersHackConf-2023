@@ -9,7 +9,7 @@ import {
 } from "framer-motion";
 
 import HamburgerIcon from "./HamburgerIcon";
-import logo from "../assets/logo.svg";
+import logo from "../assets/logoWhite.svg";
 import { menuItems } from "../data/menuItems";
 
 const Header: React.FC = () => {
@@ -51,11 +51,7 @@ const Header: React.FC = () => {
   }, [controls, isAnimating]);
 
   return (
-    <header
-      className={`w-full z-20 ${
-        navOpen ? "bg-white" : "bg-transparent"
-      } relative`}
-    >
+    <header className={`w-full z-20 bg-transparent fixed top-0 left-0`}>
       <nav>
         <div className="flex justify-between lg:justify-between py-12 max-md:py-8 lg:py-8 items-center px-7 xl:px-[102px] sm:px-[64px] font-poppins mx-auto max-w-[1500px]">
           <NavLink
@@ -81,14 +77,14 @@ const Header: React.FC = () => {
                 {menuItems.map((item) => (
                   <li
                     key={item.key}
-                    className="transition-all font-normal cursor-pointer hover:scale-105 hover:text-primary"
+                    className="font-normal transition-all cursor-pointer hover:scale-105 hover:text-primary"
                   >
                     {item.name === "Blog" ? (
                       <a
                         href={item.where}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-[#070F18]"
+                        className="text-white"
                       >
                         {item.name}
                       </a>
@@ -98,7 +94,7 @@ const Header: React.FC = () => {
                         className={
                           window.location.pathname === item.where
                             ? "text-primary"
-                            : "text-[#070F18]"
+                            : "text-white"
                         }
                       >
                         {item.name}
@@ -115,7 +111,7 @@ const Header: React.FC = () => {
             rel="noopener noreferrer"
             className="hidden transition-all donate lg:block hover:scale-110"
           >
-            <button className="bg-primary w-[150px] rounded-[10px] py-3 text-white">
+            <button className="bg-white w-[150px] rounded-[10px] py-3 text-[#5D5CD6]">
               Donate Now
             </button>
           </a>
@@ -132,7 +128,7 @@ const Header: React.FC = () => {
 
         {/* Tab menu */}
         <motion.div
-          className="bg-white overflow-hidden relative"
+          className="relative overflow-hidden bg-white"
           style={{ height: menuSpring }}
           ref={menuRef}
         >
@@ -187,7 +183,7 @@ const Header: React.FC = () => {
             rel="noopener noreferrer"
             className="absolute w-full transition-all donate bottom-10 hover:scale-110 px-7 sm:px-[62px]"
           >
-            <button className="bg-primary w-full rounded-[10px] py-3 text-white">
+            <button className="bg-primary w-full rounded-[10px] py-3 text-[#070F18]">
               Donate Now
             </button>
           </a>

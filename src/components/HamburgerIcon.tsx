@@ -5,7 +5,7 @@ interface InputProps {
 }
 const HamburgerIcon: React.FC<InputProps> = ({ isOpen }) => {
   const listStyles =
-    "h-[3px] bg-primary duration-300 transform transition-transform";
+    "h-[3px] bg-white duration-300 transform transition-transform";
 
   return (
     <div className="relative flex flex-col items-end">

@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { updateThemeColor, ThemeColor } from "../utils/Theme";
+import Faq from "../components/Home/Faq/Body";
 
 import Hero from "../components/Home/Hero";
 
@@ -16,6 +17,7 @@ export const Home = () => {
   return (
     <>
       <Hero />
+      <Faq />
     </>
   );
 };
