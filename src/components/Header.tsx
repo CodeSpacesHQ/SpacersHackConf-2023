@@ -13,6 +13,7 @@ import logo from "../assets/logoWhite.svg";
 import { menuItems } from "../data/menuItems";
 
 const Header: React.FC = () => {
+  const [isScrolled, setIsScrolled] = useState(false);
   const [navOpen, setNavOpen] = useState(false);
   const [isAnimating, setIsAnimating] = useState(false);
   const [animationKey, setAnimationKey] = useState(0);
@@ -37,6 +38,22 @@ const Header: React.FC = () => {
   };
 
   useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.scrollY;
+      if (scrollTop > 42) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  useEffect(() => {
     if (isAnimating) {
       controls.start({
         opacity: 1,
@@ -51,7 +68,11 @@ const Header: React.FC = () => {
   }, [controls, isAnimating]);
 
   return (
-    <header className={`w-full z-20 bg-transparent fixed top-0 left-0`}>
+    <header
+      className={`w-full z-20 bg-transparent fixed top-0 left-0 ${
+        isScrolled ? "bg-[#5a59d4]" : "bg-transparent"
+      }`}
+    >
       <nav>
         <div className="flex justify-between lg:justify-between py-12 max-md:py-8 lg:py-8 items-center px-7 xl:px-[102px] sm:px-[64px] font-poppins mx-auto max-w-[1500px]">
           <NavLink
@@ -112,7 +133,7 @@ const Header: React.FC = () => {
             className="hidden transition-all donate lg:block hover:scale-110"
           >
             <button className="bg-white w-[150px] rounded-[10px] py-3 text-[#5D5CD6]">
-              Donate Now
+              Register NOW!
             </button>
           </a>
           {/* Mobile Menu */}
@@ -128,7 +149,7 @@ const Header: React.FC = () => {
 
         {/* Tab menu */}
         <motion.div
-          className="relative overflow-hidden bg-white"
+          className="relative overflow-hidden bg-[#5a59d4]"
           style={{ height: menuSpring }}
           ref={menuRef}
         >
@@ -141,38 +162,21 @@ const Header: React.FC = () => {
                 style={{ transitionDelay: `${item.key * 100}ms` }}
                 className={`hover:scale-105 ${
                   !navOpen && "hidden"
-                } border-light-purple text-[#070F18] font-normal border-opacity-20 py-3 border-dashed border-t-2 text-2xl transform transition-all ease-in-out duration-500`}
+                } border-light-purple text-white font-normal py-3 text-2xl transform transition-all ease-in-out duration-500`}
               >
                 <span>
-                  {item.name === "Blog" ? (
-                    <a
-                      href={item.where}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-[#070F18]"
-                    >
-                      {item.name}
-                    </a>
-                  ) : (
-                    <NavLink
-                      to={item.where}
-                      onClick={() => {
-                        setNavOpen(false);
-                        menuHeight.set(navOpen ? 0 : 0);
-                        setIsAnimating(false);
-                        setAnimationKey((prevKey) => prevKey + 1);
-                        window.location.pathname === item.where &&
-                          scrollToTop();
-                      }}
-                      className={
-                        window.location.pathname === item.where
-                          ? "text-primary"
-                          : "text-[#070F18]"
-                      }
-                    >
-                      {item.name}
-                    </NavLink>
-                  )}
+                  <NavLink
+                    to={item.where}
+                    onClick={() => {
+                      setNavOpen(false);
+                      menuHeight.set(navOpen ? 0 : 0);
+                      setIsAnimating(false);
+                      setAnimationKey((prevKey) => prevKey + 1);
+                      window.location.pathname === item.where && scrollToTop();
+                    }}
+                  >
+                    {item.name}
+                  </NavLink>
                 </span>
               </motion.li>
             ))}
@@ -183,7 +187,7 @@ const Header: React.FC = () => {
             rel="noopener noreferrer"
             className="absolute w-full transition-all donate bottom-10 hover:scale-110 px-7 sm:px-[62px]"
           >
-            <button className="bg-primary w-full rounded-[10px] py-3 text-[#070F18]">
+            <button className="bg-white w-full rounded-[10px] py-3 text-[#5D5CD6]">
               Donate Now
             </button>
           </a>

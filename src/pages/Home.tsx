@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { updateThemeColor, ThemeColor } from "../utils/Theme";
 import Faq from "../components/Home/Faq/Body";
 import Sponsors from "../components/Home/Sponsors";
-
+import ComingSoon from "../components/Home/ComingSoon";
 import Hero from "../components/Home/Hero";
 import Goals from "../components/Home/Goals";
 
@@ -21,6 +21,7 @@ export const Home = () => {
       <Hero />
       <Goals />
       <Sponsors />
+      <ComingSoon />
       <Faq />
     </>
   );

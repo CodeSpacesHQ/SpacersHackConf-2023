@@ -1,0 +1,24 @@
+.comingSoon1 {
+  animation: moving-image-1 10s linear infinite;
+}
+.comingSoon2 {
+  animation: moving-image-2 10s linear infinite;
+}
+
+@keyframes moving-image-1 {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes moving-image-2 {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
