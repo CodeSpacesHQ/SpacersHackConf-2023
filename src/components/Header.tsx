@@ -1,26 +1,22 @@
 import React, { useState, useEffect, useRef } from "react";
 import { NavLink } from "react-router-dom";
-import {
-  motion,
-  useMotionValue,
-  useSpring,
-  MotionValue,
-  useAnimation,
-} from "framer-motion";
+import { motion, useMotionValue, useSpring, useAnimation } from "framer-motion";
 
 import HamburgerIcon from "./HamburgerIcon";
 import logo from "../assets/logoWhite.svg";
 import { menuItems } from "../data/menuItems";
 
 const Header: React.FC = () => {
+  // State and Refs
   const [isScrolled, setIsScrolled] = useState(false);
   const [navOpen, setNavOpen] = useState(false);
   const [isAnimating, setIsAnimating] = useState(false);
   const [animationKey, setAnimationKey] = useState(0);
   const menuRef = useRef<HTMLDivElement>(null);
-  const menuHeight: MotionValue<number> = useMotionValue(0);
+  const menuHeight = useMotionValue(0);
   const menuSpring = useSpring(menuHeight, { stiffness: 200, damping: 25 });
 
+  // Event Handlers
   const handleNavClick = () => {
     setNavOpen(!navOpen);
     menuHeight.set(navOpen ? 0 : 540 || 0);
@@ -37,6 +33,7 @@ const Header: React.FC = () => {
     });
   };
 
+  // Effects
   useEffect(() => {
     const handleScroll = () => {
       const scrollTop = window.scrollY;
@@ -69,11 +66,12 @@ const Header: React.FC = () => {
 
   return (
     <header
-      className={`w-full z-20 bg-transparent fixed top-0 left-0 ${
-        isScrolled ? "bg-[#5a59d4]" : "bg-transparent"
+      className={`w-full z-20 fixed top-0 left-0 ${
+        isScrolled || navOpen ? "bg-[#5a59d4]" : "bg-transparent"
       }`}
     >
       <nav>
+        {/* Desktop Menu */}
         <div className="flex justify-between lg:justify-between py-12 max-md:py-8 lg:py-8 items-center px-7 xl:px-[102px] sm:px-[64px] font-poppins mx-auto max-w-[1500px]">
           <NavLink
             to={"/"}
@@ -91,7 +89,7 @@ const Header: React.FC = () => {
               className="relative h-[16px] xmd:max-xl:h-[16px] sm:h-5 cursor-pointer z-40"
             />
           </NavLink>
-          {/* Menu */}
+          {/* Desktop Menu Items */}
           <div className="items-center justify-between hidden menu lg:flex">
             <div>
               <ul className="flex space-x-10 lg:space-x-6 wideScreen:space-x-[61px] xl:space-x-[30px]">
@@ -126,8 +124,9 @@ const Header: React.FC = () => {
               </ul>
             </div>
           </div>
+          {/* Donate Button */}
           <a
-            href="https://paystack.com/pay/77iitrxp80"
+            href="#"
             target="_blank"
             rel="noopener noreferrer"
             className="hidden transition-all donate lg:block hover:scale-110"
@@ -147,7 +146,7 @@ const Header: React.FC = () => {
           </div>
         </div>
 
-        {/* Tab menu */}
+        {/* Mobile Menu Items */}
         <motion.div
           className="relative overflow-hidden bg-[#5a59d4]"
           style={{ height: menuSpring }}
@@ -181,8 +180,9 @@ const Header: React.FC = () => {
               </motion.li>
             ))}
           </ul>
+          {/* Donate Button */}
           <a
-            href="https://paystack.com/pay/77iitrxp80"
+            href="#"
             target="_blank"
             rel="noopener noreferrer"
             className="absolute w-full transition-all donate bottom-10 hover:scale-110 px-7 sm:px-[62px]"
