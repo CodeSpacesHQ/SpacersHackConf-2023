@@ -1,8 +1,10 @@
 import { useEffect } from "react";
 import { updateThemeColor, ThemeColor } from "../utils/Theme";
 import Faq from "../components/Home/Faq/Body";
+import Sponsors from "../components/Home/Sponsors";
 
 import Hero from "../components/Home/Hero";
+import Goals from "../components/Home/Goals";
 
 export const Home = () => {
   useEffect(() => {
@@ -17,6 +19,8 @@ export const Home = () => {
   return (
     <>
       <Hero />
+      <Goals />
+      <Sponsors />
       <Faq />
     </>
   );
