@@ -13,16 +13,16 @@ export const menuItems: MenuItems[] = [
   {
     key: 2,
     name: "Sponsors",
-    where: "#",
+    where: "sponsors",
   },
   {
     key: 3,
     name: "Speakers",
-    where: "#",
+    where: "/speakers",
   },
   {
     key: 4,
     name: "Contact",
-    where: "#",
+    where: "mailto:hello@codespaceafrica.com",
   },
 ];

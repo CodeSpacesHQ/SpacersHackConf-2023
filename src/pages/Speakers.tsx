@@ -1,13 +1,11 @@
 import { useEffect } from "react";
 import { updateThemeColor, ThemeColor } from "../utils/Theme";
-import Faq from "../components/Home/Faq/Body";
 import Sponsors from "../components/Sponsors";
 import ComingSoon from "../components/ComingSoon";
-import Hero from "../components/Home/Hero";
-import Goals from "../components/Home/Goals";
-import Services from "../components/Home/Services";
+import Hero from "../components/Speakers/Hero";
+import LineUp from "../components/Speakers/LineUp";
 
-export const Home = () => {
+export const Speakers = () => {
   useEffect(() => {
     const themeColor: ThemeColor = "#5D5CD6"; // Set the theme color type explicitly
 
@@ -20,11 +18,9 @@ export const Home = () => {
   return (
     <>
       <Hero />
-      <Goals />
-      <Services />
+      <LineUp />
       <ComingSoon />
       <Sponsors />
-      <Faq />
     </>
   );
 };

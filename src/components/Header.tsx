@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { NavLink } from "react-router-dom";
+import { Link } from "react-scroll";
 import { motion, useMotionValue, useSpring, useAnimation } from "framer-motion";
 
 import HamburgerIcon from "./HamburgerIcon";
@@ -77,23 +78,38 @@ const Header: React.FC = () => {
                     key={item.key}
                     className="font-normal transition-all cursor-pointer hover:scale-105 hover:text-primary"
                   >
-                    {item.name === "Blog" ? (
+                    {item.name === "Contact" ? (
                       <a
                         href={item.where}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-white"
+                        className={`${
+                          window.location.pathname === item.where
+                            ? "text-indigo-500"
+                            : "text-white"
+                        } hover:text-indigo-500`}
                       >
                         {item.name}
                       </a>
+                    ) : item.name === "Sponsors" || item.name === "Agenda" ? (
+                      <Link
+                        to={item.where}
+                        smooth={true}
+                        duration={500}
+                        className={`${
+                          window.location.pathname === item.where
+                            ? "text-indigo-500"
+                            : "text-white"
+                        } hover:text-indigo-500`}
+                      >
+                        {item.name}
+                      </Link>
                     ) : (
                       <NavLink
                         to={item.where}
-                        className={
+                        className={`${
                           window.location.pathname === item.where
-                            ? "text-primary"
+                            ? "text-indigo-500"
                             : "text-white"
-                        }
+                        } hover:text-indigo-500`}
                       >
                         {item.name}
                       </NavLink>
@@ -103,9 +119,9 @@ const Header: React.FC = () => {
               </ul>
             </div>
           </div>
-          {/* Donate Button */}
+          {/* Register Button */}
           <a
-            href="#"
+            href="https://forms.gle/ZztYnDQmu8MMTPdE9"
             target="_blank"
             rel="noopener noreferrer"
             className="hidden transition-all donate lg:block hover:scale-110"
@@ -143,31 +159,69 @@ const Header: React.FC = () => {
                 } border-light-purple text-white font-normal py-3 text-2xl transform transition-all ease-in-out duration-500`}
               >
                 <span>
-                  <NavLink
-                    to={item.where}
-                    onClick={() => {
-                      setNavOpen(false);
-                      menuHeight.set(navOpen ? 0 : 0);
-                      setIsAnimating(false);
-                      setAnimationKey((prevKey) => prevKey + 1);
-                      window.location.pathname === item.where && scrollToTop();
-                    }}
-                  >
-                    {item.name}
-                  </NavLink>
+                  {item.name === "Contact" ? (
+                    <a
+                      href={item.where}
+                      className={`${
+                        window.location.pathname === item.where
+                          ? "text-indigo-500"
+                          : "text-white"
+                      } hover:text-indigo-500`}
+                    >
+                      {item.name}
+                    </a>
+                  ) : item.name === "Sponsors" || item.name === "Agenda" ? (
+                    <Link
+                      to={item.where}
+                      onClick={() => {
+                        setNavOpen(false);
+                        menuHeight.set(navOpen ? 0 : 0);
+                        setIsAnimating(false);
+                        setAnimationKey((prevKey) => prevKey + 1);
+                      }}
+                      smooth={true}
+                      duration={500}
+                      className={`${
+                        window.location.pathname === item.where
+                          ? "text-indigo-500"
+                          : "text-white"
+                      } hover:text-indigo-500`}
+                    >
+                      {item.name}
+                    </Link>
+                  ) : (
+                    <NavLink
+                      to={item.where}
+                      onClick={() => {
+                        setNavOpen(false);
+                        menuHeight.set(navOpen ? 0 : 0);
+                        setIsAnimating(false);
+                        setAnimationKey((prevKey) => prevKey + 1);
+                        window.location.pathname === item.where &&
+                          scrollToTop();
+                      }}
+                      className={`${
+                        window.location.pathname === item.where
+                          ? "text-indigo-500"
+                          : "text-white"
+                      } hover:text-indigo-500`}
+                    >
+                      {item.name}
+                    </NavLink>
+                  )}
                 </span>
               </motion.li>
             ))}
           </ul>
-          {/* Donate Button */}
+          {/* Register Button */}
           <a
             href="#"
-            target="_blank"
+            target="https://forms.gle/ZztYnDQmu8MMTPdE9"
             rel="noopener noreferrer"
             className="absolute w-full transition-all donate bottom-10 hover:scale-110 px-7 sm:px-[62px]"
           >
             <button className="bg-white w-full rounded-[10px] py-3 text-[#5D5CD6]">
-              Donate Now
+              Register NOW!
             </button>
           </a>
         </motion.div>

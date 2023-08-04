@@ -17,20 +17,30 @@
   display: inline-block;
 }
 
-.comingSoon1 {
-  animation: moving-image-1 10s linear infinite;
-}
-.comingSoon2 {
-  animation: moving-image-2 10s linear infinite;
-}
-
 @keyframes textclip {
   to {
     background-position: 200% center;
   }
 }
 
-@keyframes moving-image-1 {
+.text-animation {
+  display: inline-block;
+  position: absolute;
+  width: max-content;
+  animation-duration: 10s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+.comingSoon1 {
+  animation-name: moving-text-1;
+}
+
+.comingSoon2 {
+  animation-name: moving-text-2;
+}
+
+@keyframes moving-text-1 {
   0% {
     transform: translateX(0);
   }
@@ -39,7 +49,7 @@
   }
 }
 
-@keyframes moving-image-2 {
+@keyframes moving-text-2 {
   0% {
     transform: translateX(100%);
   }

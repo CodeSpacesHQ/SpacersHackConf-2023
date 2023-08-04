@@ -3,7 +3,10 @@ import AnimateWords from "../../config/textAnimation";
 
 const Goals = () => {
   return (
-    <section className="relative bg-center bg-[url('../assets/pattern.svg')] bg-cover w-full overflow-hidden">
+    <section
+      id="agenda"
+      className="relative bg-center bg-[url('../assets/pattern.svg')] bg-cover w-full overflow-hidden"
+    >
       <div className="pt-20 pb-[135px] text-center ">
         <p className="text-indigo-500 font-gelion text-sm sm:text-2xl font-medium tracking-widest sm:font-semibold uppercase sm:tracking-[2.88px] mb-[22px] sm:mb-[50px]">
           <AnimateWords text="Theme - Inspire, Integrate & Innovate" />
@@ -16,13 +19,6 @@ const Goals = () => {
           of their shells and network properly, and on the best ways to innovate
           a groundbreaking technology.
         </p>
-        <div className="absolute bottom-[0] right-[0]">
-          <img
-            src={splash}
-            alt={`splash pattern`}
-            className="object-cover w-56 sm:w-72"
-          />
-        </div>
       </div>
     </section>
   );

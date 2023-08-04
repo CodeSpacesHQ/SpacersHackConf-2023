@@ -1,7 +1,8 @@
 import { services } from "../../data/services";
 
 import AnimateWords from "../../config/textAnimation";
-import DraggableRotatableImages from "./DraggableRotatableImage";
+import notes from "../../assets/notes.png";
+// import DraggableRotatableImages from "./DraggableRotatableImage";
 
 const Services = () => {
   return (
@@ -28,7 +29,8 @@ const Services = () => {
           ))}
         </div>
       </div>
-      <DraggableRotatableImages />
+      {/* <DraggableRotatableImages /> */}
+      <img src={notes} alt="stickynotes" className="w-full h-auto" />
     </section>
   );
 };
