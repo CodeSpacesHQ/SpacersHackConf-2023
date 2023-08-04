@@ -1,33 +1,7 @@
 import { services } from "../../data/services";
-import {
-  first,
-  second,
-  third,
-  four,
-  five,
-  six,
-  seven,
-  eight,
-  nine,
-  ten,
-  eleven,
-  twelve,
-} from "../../assets/stickynotes";
-const imagesArray = [
-  first,
-  second,
-  third,
-  four,
-  five,
-  six,
-  seven,
-  eight,
-  nine,
-  ten,
-  eleven,
-  twelve,
-];
+
 import AnimateWords from "../../config/textAnimation";
+import DraggableRotatableImages from "./DraggableRotatableImage";
 
 const Services = () => {
   return (
@@ -54,18 +28,7 @@ const Services = () => {
           ))}
         </div>
       </div>
-      {/* <div className="h-[599px] bg-gradient-to-b from-slate-50 to-slate-50 rounded-[28px]">
-        <div>
-          {imagesArray.map((imgSrc, index) => (
-            <img
-              key={index}
-              src={imgSrc}
-              alt="Sticky notes"
-              className="w-[270px] h-auto"
-            />
-          ))}
-        </div>
-      </div> */}
+      <DraggableRotatableImages />
     </section>
   );
 };
