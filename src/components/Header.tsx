@@ -76,43 +76,20 @@ const Header: React.FC = () => {
                 {menuItems.map((item) => (
                   <li
                     key={item.key}
-                    className="font-normal transition-all cursor-pointer hover:scale-105 hover:text-primary"
+                    className={`font-normal underline-offset-8 transition-all cursor-pointer hover:scale-105 text-white ${
+                      window.location.pathname === item.where
+                        ? "underline"
+                        : "no-underline"
+                    } hover:underline`}
                   >
                     {item.name === "Contact" ? (
-                      <a
-                        href={item.where}
-                        className={`${
-                          window.location.pathname === item.where
-                            ? "text-indigo-500"
-                            : "text-white"
-                        } hover:text-indigo-500`}
-                      >
-                        {item.name}
-                      </a>
+                      <a href={item.where}>{item.name}</a>
                     ) : item.name === "Sponsors" || item.name === "Agenda" ? (
-                      <Link
-                        to={item.where}
-                        smooth={true}
-                        duration={500}
-                        className={`${
-                          window.location.pathname === item.where
-                            ? "text-indigo-500"
-                            : "text-white"
-                        } hover:text-indigo-500`}
-                      >
+                      <Link to={item.where} smooth={true} duration={500}>
                         {item.name}
                       </Link>
                     ) : (
-                      <NavLink
-                        to={item.where}
-                        className={`${
-                          window.location.pathname === item.where
-                            ? "text-indigo-500"
-                            : "text-white"
-                        } hover:text-indigo-500`}
-                      >
-                        {item.name}
-                      </NavLink>
+                      <NavLink to={item.where}>{item.name}</NavLink>
                     )}
                   </li>
                 ))}
@@ -156,20 +133,15 @@ const Header: React.FC = () => {
                 style={{ transitionDelay: `${item.key * 100}ms` }}
                 className={`hover:scale-105 ${
                   !navOpen && "hidden"
-                } border-light-purple text-white font-normal py-3 text-2xl transform transition-all ease-in-out duration-500`}
+                } border-light-purple underline-offset-8 text-white font-normal py-3 text-2xl transform transition-all ease-in-out duration-500 ${
+                  window.location.pathname === item.where
+                    ? "underline"
+                    : "no-underline"
+                } hover:underline`}
               >
                 <span>
                   {item.name === "Contact" ? (
-                    <a
-                      href={item.where}
-                      className={`${
-                        window.location.pathname === item.where
-                          ? "text-indigo-500"
-                          : "text-white"
-                      } hover:text-indigo-500`}
-                    >
-                      {item.name}
-                    </a>
+                    <a href={item.where}>{item.name}</a>
                   ) : item.name === "Sponsors" || item.name === "Agenda" ? (
                     <Link
                       to={item.where}
@@ -181,11 +153,6 @@ const Header: React.FC = () => {
                       }}
                       smooth={true}
                       duration={500}
-                      className={`${
-                        window.location.pathname === item.where
-                          ? "text-indigo-500"
-                          : "text-white"
-                      } hover:text-indigo-500`}
                     >
                       {item.name}
                     </Link>
@@ -200,11 +167,6 @@ const Header: React.FC = () => {
                         window.location.pathname === item.where &&
                           scrollToTop();
                       }}
-                      className={`${
-                        window.location.pathname === item.where
-                          ? "text-indigo-500"
-                          : "text-white"
-                      } hover:text-indigo-500`}
                     >
                       {item.name}
                     </NavLink>

@@ -1,4 +1,3 @@
-import splash from "../../assets/splash.png";
 import AnimateWords from "../../config/textAnimation";
 
 const Goals = () => {
