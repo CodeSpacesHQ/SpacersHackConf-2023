@@ -8,7 +8,6 @@ import { menuItems } from "../data/menuItems";
 
 const Header: React.FC = () => {
   // State and Refs
-  const [isScrolled, setIsScrolled] = useState(false);
   const [navOpen, setNavOpen] = useState(false);
   const [isAnimating, setIsAnimating] = useState(false);
   const [animationKey, setAnimationKey] = useState(0);
@@ -35,22 +34,6 @@ const Header: React.FC = () => {
 
   // Effects
   useEffect(() => {
-    const handleScroll = () => {
-      const scrollTop = window.scrollY;
-      if (scrollTop > 42) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
-
-  useEffect(() => {
     if (isAnimating) {
       controls.start({
         opacity: 1,
@@ -65,11 +48,7 @@ const Header: React.FC = () => {
   }, [controls, isAnimating]);
 
   return (
-    <header
-      className={`w-full z-20 fixed top-0 left-0 ${
-        isScrolled || navOpen ? "bg-[#5a59d4]" : "bg-transparent"
-      }`}
-    >
+    <header className={`w-full z-20 bg-[#5a59d4]`}>
       <nav>
         {/* Desktop Menu */}
         <div className="flex justify-between lg:justify-between py-12 max-md:py-8 lg:py-8 items-center px-7 xl:px-[102px] sm:px-[64px] font-poppins mx-auto max-w-[1500px]">

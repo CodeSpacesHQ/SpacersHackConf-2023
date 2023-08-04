@@ -5,6 +5,7 @@ import Sponsors from "../components/Home/Sponsors";
 import ComingSoon from "../components/Home/ComingSoon";
 import Hero from "../components/Home/Hero";
 import Goals from "../components/Home/Goals";
+import Services from "../components/Home/Services";
 
 export const Home = () => {
   useEffect(() => {
@@ -20,8 +21,9 @@ export const Home = () => {
     <>
       <Hero />
       <Goals />
-      <Sponsors />
+      <Services />
       <ComingSoon />
+      <Sponsors />
       <Faq />
     </>
   );

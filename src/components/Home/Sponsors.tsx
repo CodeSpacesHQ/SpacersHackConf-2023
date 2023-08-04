@@ -1,10 +1,11 @@
 import logo from "../../assets/couchBase.svg";
+import AnimateWords from "../../config/textAnimation";
 
 const sponsors = () => {
   return (
-    <div className="bg-white h-screen flex flex-col items-center pt-[37px]">
+    <div className="flex flex-col items-center pt-[37px] pb-8">
       <h1 className="text-center font-gelion text-black text-xl sm:text-[35px] font-bold uppercase leading-[92px] mb-0 sm:mb-9">
-        Headline Sponsors
+        <AnimateWords text="Headline Sponsors" />
       </h1>
       <img
         src={logo}
