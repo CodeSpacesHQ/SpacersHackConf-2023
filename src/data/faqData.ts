@@ -5,49 +5,57 @@ interface faqData {
 
 export const faqData: faqData[] = [
   {
-    question: "What is Code Space all about?",
+    question: "When and where will the hackathon take place?",
     answer:
-      "Code Space is a community where Gen Z developers, founders, designers, and techies across Africa can connect in a single platform, facilitating the exchange of opportunities, collaboration on remarkable projects, and the formation of meaningful relationships.",
+      "The hackathon will take place from September 18th to September 27th, 2023. The event will be held virtually, and participants can join from anywhere with an internet connection.",
   },
   {
-    question: "Is Code Space a not-for-profit organisation?",
+    question: "How can I register for the hackathon?",
     answer:
-      "Yes, Code Space is a non-profit organization committed to its mission and vision. We operate with the utmost transparency and integrity, ensuring that all funds generated or contributed to the community are solely directed towards fulfilling our objectives and sustaining our operations.",
+      "To register for the hackathon, ensure you have a team. This is a team based hackathon, and we look forward to your collective effort.",
   },
   {
-    question:
-      "I love what your organization does. How can I partner with Code Space?",
+    question: "Can I participate individually, or do I need to form a team?",
     answer:
-      " To learn more about our partnerships and donation opportunities, please visit our dedicated page on our website. You'll find detailed information on how you can get involved and make a meaningful contribution to Code Space's mission. If you have any questions or would like to get in touch with us directly, please feel free to reach out by filling out the contact form on our website or reaching us through our social media channels. ",
+      "To ensure diversity of ideas and collaboration, each team must consist of a minimum of five people.",
   },
   {
-    question: "How do I become a member of  Code Space Africa?",
-    answer:
-      "To be a member of Code Space Africa, simply Click on the 'Join Community' on our website to be part of Code Space Africa.",
+    question: "Are there any age restrictions for participants?",
+    answer: "The hackathon is open to participants of all ages across Africa.",
   },
   {
-    question: "What is  Code Space Mission?",
+    question: "What programming languages and technologies are allowed?",
     answer:
-      "At Code Space, our mission is to foster a thriving community that promotes technical growth, networking, mentoring, and visibility across all levels and career roles in the world of technology.",
+      "Participants are free to use any programming languages and technologies of their choice. Web, mobile, and hardware projects are all welcome. However, for databases, all teams must use Couchbase.",
   },
   {
-    question: "How do I contact Code Space on sponsoring / partnering?",
+    question: "How will projects be judged?",
     answer:
-      "You can reach us via partnership@codespaceafrica.com",
+      "Projects will be judged based on creativity, technical complexity, impact, and overall presentation. Judges will consider how well teams address the theme and the practicality of the solutions presented.",
   },
   {
-    question: "Can I post a job to your community?",
+    question: "What are the prizes for the winning teams?",
     answer:
-      "Yes you can, kindly visit our jobs page or join our community on slack to post any job opportunities.",
+      "There will be prizes for the top-performing teams, including cash rewards and tech swag.",
   },
   {
-    question: "Who are our members?",
+    question: "Will there be mentors available to help during the hackathon?",
     answer:
-      "Code Space members encompass a diverse community of tech enthusiasts, including developers, founders, designers, and techies from all backgrounds and career stages.",
+      "Yes, experienced mentors will be available throughout the hackathon to provide guidance, answer technical questions, and support participants in their projects.",
   },
   {
-    question: "Why should I partner with Code Space?",
+    question: "Is there a code of conduct for the hackathon?",
     answer:
-      " Partnering with Code Space, Your organization would have the opportunity to tap into a vibrant community of passionate tech professionals from across 11+ African countries, access diverse talent, and collaborate on innovative projects that shape the future of technology.",
+      "Yes, all participants are required to follow a code of conduct that promotes a respectful and inclusive environment for everyone. Any violations may result in disqualification from the event.",
+  },
+  {
+    question: "How can I stay updated on the hackathon details?",
+    answer:
+      "All updates, including the conference schedule, team formations, and any rule changes, will be communicated via our Slack channel to registered participants. Additionally, you can follow the official event social media channels for real-time updates.",
+  },
+  {
+    question: "Can I join the hackathon if I'm not a developer?",
+    answer:
+      "Absolutely! The hackathon is open to participants with various skills, such as designers, marketers, project managers, and domain experts. Diverse teams often lead to more well-rounded and innovative solutions.",
   },
 ];
