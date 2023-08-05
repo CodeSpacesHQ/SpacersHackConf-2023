@@ -32,7 +32,7 @@ const Hero = () => {
             <div className="mb-[46px] flex sm:justify-start lg:justify-center gap-x-5 max-sm:gap-y-2 max-sm:flex-col">
               <a href="https://forms.gle/ZztYnDQmu8MMTPdE9" target="_blank">
                 <button
-                  className="hover:bg-indigo-500 bg-[#fefefe] hover:border-indigo-500 hover:text-[fefefe]
+                  className="hover:bg-indigo-500 bg-[#fefefe] hover:border-indigo-500 hover:text-[#fefefe]
                rounded-[38px] w-[282px] py-5 text-center font-poppins text-indigo-500 text-[16px] font-semibold"
                 >
                   REGISTER FOR HACKATHON
@@ -40,7 +40,7 @@ const Hero = () => {
               </a>
               <a href="#" target="_blank">
                 <button
-                  className="hover:bg-indigo-500 bg-[#fefefe] hover:border-indigo-500 hover:text-[fefefe]
+                  className="hover:bg-indigo-500 bg-[#fefefe] hover:border-indigo-500 hover:text-[#fefefe]
                rounded-[38px] w-[282px] py-5 text-center font-poppins text-indigo-500 text-[16px] font-semibold"
                 >
                   BECOME A SPONSOR
