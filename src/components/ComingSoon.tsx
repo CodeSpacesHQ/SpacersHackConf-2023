@@ -14,6 +14,16 @@ const ComingSoon = () => {
             <span className="inline-flex">
               <img src={bracket} alt="icon" />
             </span>
+            <span className="flex items-center">
+              Spacer’s Hack Conf 2023
+              <span className="inline-flex">
+                <img src={bracket} alt="icon" />
+              </span>
+              See soon
+              <span className="inline-flex">
+                <img src={bracket} alt="icon" />
+              </span>
+            </span>
           </p>
           <div className="w-7 h-7 justify-center items-center inline-flex">
             <div className="w-7 h-7 relative"></div>
@@ -28,6 +38,16 @@ const ComingSoon = () => {
             See soon
             <span className="inline-flex">
               <img src={bracket} alt="icon" />
+            </span>
+            <span className="flex items-center">
+              Spacer’s Hack Conf 2023
+              <span className="inline-flex">
+                <img src={bracket} alt="icon" />
+              </span>
+              See soon
+              <span className="inline-flex">
+                <img src={bracket} alt="icon" />
+              </span>
             </span>
           </p>
         </div>

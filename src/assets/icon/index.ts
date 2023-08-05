@@ -3,7 +3,7 @@ import star2 from "./Star 2.svg";
 import plus from "./plus.svg";
 import minus from "./minus.svg";
 import events from "./events.svg";
-import fun from "./fun.svg";
+import fun from "./network.svg";
 import hackathon from "./hackathon.svg";
 
 export { star1, star2, plus, minus, events, fun, hackathon };

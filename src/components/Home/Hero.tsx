@@ -2,10 +2,14 @@ import splash from "../../assets/heroSplash.png";
 import splashBlue from "../../assets/splash.png";
 import art from "../../assets/art.png";
 import { star2 } from "../../assets/icon";
+import hero from "../../assets/hero.png";
+import heroSmall from "../../assets/heroSmall.png";
+import play from "../../assets/play.svg";
 
 const Hero = () => {
   return (
     <>
+      <div className="absolute top-0 left-0 w-full bg-[#5D5CD6] bg-cover h-20 sm:h-28"></div>
       <section className="relative bg-center bg-[url('../assets/heroPattern.svg')] bg-cover w-full overflow-hidden">
         <div className="mt-[82px] max-w-[1500px] px-[102px] max-lg:px-16 max-lg:mb-9 max-md:px-7">
           <div className="flex flex-col lg:items-center w-full ">
@@ -48,16 +52,35 @@ const Hero = () => {
               </a>
             </div>
           </div>
-          <div>
-            <iframe
-              width="100%"
-              height="368"
-              src="https://www.youtube.com/embed/LmbwpDKKoLQ?controls=0"
-              allowFullScreen
-              className="rounded-tl-[28px] rounded-tr-[28px] max-lg:rounded-[28px]"
-              frameBorder="0"
+          <a
+            href="https://youtu.be/LmbwpDKKoLQ"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="relative group"
+          >
+            <img
+              src={hero}
+              alt="hero image"
+              className="w-full m-auto max-lg:hidden"
             />
-          </div>
+            <img
+              src={heroSmall}
+              alt="hero image"
+              className="w-full lg:hidden rounded-[20px]"
+            />
+            <div
+              className="absolute bottom-[50%] left-[50%] transition opacity-0 rounded-full flex items-center justify-center w-[134.93px] h-[136px] drop-shadow-md right-5 group-hover:opacity-100"
+              style={{
+                transform: "translate(-50%, 50%)",
+              }}
+            >
+              <img
+                src={play}
+                className="object-cover hover:scale-110"
+                alt="play icon"
+              />
+            </div>
+          </a>
         </div>
         <div className="absolute -bottom-[70px] max-sm:-bottom-[60px] -right-[10px]">
           <img
