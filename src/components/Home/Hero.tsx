@@ -11,7 +11,7 @@ const Hero = () => {
     <>
       <div className="absolute top-0 left-0 w-full bg-[#5D5CD6] bg-cover h-20 sm:h-28"></div>
       <section className="relative bg-center bg-[url('../assets/heroPattern.svg')] bg-cover w-full overflow-hidden">
-        <div className="mt-[82px] max-w-[1500px] px-[102px] max-lg:px-16 max-lg:mb-9 max-md:px-7">
+        <div className="mt-[82px] max-w-[1500px] mx-auto px-[102px] max-lg:px-16 max-lg:mb-9 max-md:px-7">
           <div className="flex flex-col lg:items-center w-full ">
             <div className="font-gelion lg:text-center text-white text-[48px]/[55px] sm:text-[75px] lg:text-6xl/[92px] font-bold uppercase sm:leading-[92px] tracking-[3.75px] mb-[5px]">
               Spacer’s <br className="lg:hidden" /> Hack Conf{" "}

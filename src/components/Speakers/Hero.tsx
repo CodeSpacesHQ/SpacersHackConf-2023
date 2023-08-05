@@ -7,7 +7,7 @@ const Hero = () => {
     <>
       <div className="absolute top-0 left-0 w-full bg-[#f8f8fd] bg-cover h-20 sm:h-28"></div>
       <section className="relative bg-center bg-[url('../assets/speakersPattern.svg')] bg-cover w-full overflow-hidden">
-        <div className="pt-[198px] pb-[204px] max-w-[1500px] px-[102px] max-lg:px-16 max-lg:mb-9 max-md:px-7">
+        <div className="pt-[198px] pb-[204px] max-w-[1500px] mx-auto px-[102px] max-lg:px-16 max-lg:mb-9 max-md:px-7">
           <div className="flex items-center justify-center align-middle w-full ">
             <h1 className="text-indigo-500 font-gelion text-5xl sm:text-[90px] lg:text-[110px] font-bold uppercase sm:leading-[92px]">
               MEET OUR
