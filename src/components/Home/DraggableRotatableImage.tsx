@@ -1,5 +1,7 @@
+// Import React and other required modules
 import React, { useRef, useState, useEffect } from "react";
 
+// Import image assets
 import {
   first,
   second,
@@ -15,6 +17,7 @@ import {
   twelve,
 } from "../../assets/stickynotes";
 
+// An array containing the imported image assets
 const imagesArray = [
   first,
   second,
@@ -30,47 +33,41 @@ const imagesArray = [
   twelve,
 ];
 
+// DraggableCanvas component - the main component that holds the draggable balls
 const DraggableCanvas: React.FC = () => {
+  // Define the height of the container and the initial container padding
   const containerHeight = 599;
   const [containerPadding, setContainerPadding] = useState(28); // Default padding value
 
+  // useEffect hook to handle resizing of the window and set container padding accordingly
   useEffect(() => {
-    const handleResize = () => {
-      // Define breakpoints for different screen sizes
-      const mobileBreakpoint = 640;
-      const desktopBreakpoint = 1024;
-      const largeScreenBreakpoint = 1280;
+    // Define breakpoints for different screen sizes
+    const mobileBreakpoint = 640;
+    const desktopBreakpoint = 1024;
+    const largeScreenBreakpoint = 1280;
 
-      // Get the current window width
-      const screenWidth = window.innerWidth;
+    // Get the current window width
+    const screenWidth = window.innerWidth;
 
-      // Set the padding based on the screen size
-      if (screenWidth < mobileBreakpoint) {
-        setContainerPadding(28); // Set padding for mobile screens
-      } else if (
-        screenWidth >= mobileBreakpoint &&
-        screenWidth < desktopBreakpoint
-      ) {
-        setContainerPadding(64); // Set padding for desktop screens
-      } else if (
-        screenWidth >= desktopBreakpoint &&
-        screenWidth < largeScreenBreakpoint
-      ) {
-        setContainerPadding(65); // Set padding for large screens
-      } else {
-        setContainerPadding(102); // Set padding for larger screens
-      }
-    };
-
-    // Call the handleResize function when the window is resized
-    window.addEventListener("resize", handleResize);
-    // Call the handleResize function initially to set the padding based on the initial screen size
-    handleResize();
-
-    // Clean up the event listener on unmount
-    return () => window.removeEventListener("resize", handleResize);
+    // Set the padding based on the screen size
+    if (screenWidth < mobileBreakpoint) {
+      setContainerPadding(28); // Set padding for mobile screens
+    } else if (
+      screenWidth >= mobileBreakpoint &&
+      screenWidth < desktopBreakpoint
+    ) {
+      setContainerPadding(64); // Set padding for desktop screens
+    } else if (
+      screenWidth >= desktopBreakpoint &&
+      screenWidth < largeScreenBreakpoint
+    ) {
+      setContainerPadding(65); // Set padding for large screens
+    } else {
+      setContainerPadding(102); // Set padding for larger screens
+    }
   }, []);
 
+  // State to hold the balls and their positions, velocity, and rotation
   const [balls, setBalls] = useState<
     {
       position: { x: number; y: number };
@@ -78,6 +75,7 @@ const DraggableCanvas: React.FC = () => {
       rotation: number; // New property to store the rotation of the ball
     }[]
   >([
+    // Initial ball positions and velocities
     { position: { x: 50, y: 50 }, velocity: { x: 1, y: 1 }, rotation: 0 },
     { position: { x: 150, y: 100 }, velocity: { x: -2, y: -1 }, rotation: 0 },
     { position: { x: 200, y: 200 }, velocity: { x: 0.5, y: -1 }, rotation: 0 },
@@ -92,9 +90,11 @@ const DraggableCanvas: React.FC = () => {
     { position: { x: 1100, y: 300 }, velocity: { x: -2, y: 1 }, rotation: 0 },
   ]);
 
+  // Return the JSX for the DraggableCanvas component
   return (
     <div className="h-[599px] w-full overflow-hidden bg-gradient-to-b from-slate-50 to-slate-50 rounded-[28px] p-4 relative">
       <div className="w-full h-full flex flex-wrap">
+        {/* Map through the balls array and render the Ball component for each ball */}
         {balls.map((ball, index) => (
           <Ball
             key={index}
@@ -111,6 +111,7 @@ const DraggableCanvas: React.FC = () => {
   );
 };
 
+// Ball component - represents a draggable ball
 interface BallProps {
   containerHeight: number;
   containerPadding: number;
@@ -143,17 +144,24 @@ const Ball: React.FC<BallProps> = ({
   index,
   setBalls,
 }) => {
+  // Constants for the ball properties
   const radius = 80;
   const gravity = 0.2;
   const rotationSpeed = 0.1;
 
+  // Ref to hold the DOM element of the ball
   const ballRef = useRef<HTMLImageElement>(null);
+
+  // State to track if the ball is being dragged
   const [isDragging, setIsDragging] = useState(false);
+
+  // State to hold the drag offset from the initial click position
   const [dragOffset, setDragOffset] = useState<{ x: number; y: number }>({
     x: 0,
     y: 0,
   });
 
+  // Event handler for when the user starts dragging the ball
   const handleDragStart = (event: React.MouseEvent<HTMLImageElement>) => {
     event.preventDefault();
     setIsDragging(true);
@@ -164,10 +172,12 @@ const Ball: React.FC<BallProps> = ({
     setDragOffset({ x: offsetX, y: offsetY });
   };
 
+  // Event handler for when the user stops dragging the ball
   const handleDragEnd = () => {
     setIsDragging(false);
   };
 
+  // Event handler for when the user moves the mouse while dragging the ball
   const handleDragMove = (event: MouseEvent) => {
     if (isDragging) {
       const newMouseX = event.clientX;
@@ -203,20 +213,22 @@ const Ball: React.FC<BallProps> = ({
     }
   };
 
+  // useEffect hook to add and remove mouse event listeners for dragging
   useEffect(() => {
     if (isDragging) {
-      document.addEventListener("mousemove", handleDragMove);
-      document.addEventListener("mouseup", handleDragEnd);
+      document.addEventListener("touchmove", handleDragMove as any);
+      document.addEventListener("touchend", handleDragEnd);
     } else {
       document.removeEventListener("mousemove", handleDragMove);
-      document.removeEventListener("mouseup", handleDragEnd);
+      document.removeEventListener("touchend", handleDragEnd);
     }
     return () => {
-      document.removeEventListener("mousemove", handleDragMove);
-      document.removeEventListener("mouseup", handleDragEnd);
+      document.removeEventListener("touchmove", handleDragMove as any);
+      document.removeEventListener("touchend", handleDragEnd);
     };
   }, [isDragging, handleDragMove, handleDragEnd]);
 
+  // useEffect hook to handle ball movement and collision
   useEffect(() => {
     const intervalId = setInterval(() => {
       setBalls((prevBalls) => {
@@ -278,14 +290,15 @@ const Ball: React.FC<BallProps> = ({
             }
           }
         }
-
         return updatedBalls;
       });
     }, 1000 / 60);
 
+    // Cleanup interval on unmount
     return () => clearInterval(intervalId);
   }, [containerHeight, containerPadding, index, radius, gravity, setBalls]);
 
+  // JSX for rendering the ball image
   return (
     <img
       ref={ballRef}
@@ -302,4 +315,5 @@ const Ball: React.FC<BallProps> = ({
   );
 };
 
+// Export the DraggableCanvas component as the default export
 export default DraggableCanvas;

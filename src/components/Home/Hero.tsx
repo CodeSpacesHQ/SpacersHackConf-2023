@@ -1,9 +1,9 @@
-import splash from "../../assets/heroSplash.png";
-import splashBlue from "../../assets/splash.png";
-import art from "../../assets/art.png";
+import splash from "../../assets/heroSplash.webp";
+import splashBlue from "../../assets/splash.webp";
+import art from "../../assets/art.webp";
 import { star2 } from "../../assets/icon";
-import hero from "../../assets/hero.png";
-import heroSmall from "../../assets/heroSmall.png";
+import hero from "../../assets/hero.webp";
+import heroSmall from "../../assets/heroSmall.webp";
 import play from "../../assets/play.svg";
 
 const Hero = () => {

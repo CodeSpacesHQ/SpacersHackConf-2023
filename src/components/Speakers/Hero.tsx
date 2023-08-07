@@ -1,5 +1,5 @@
-import splash from "../../assets/heroSplash.png";
-import art from "../../assets/art.png";
+import splash from "../../assets/heroSplash.webp";
+import art from "../../assets/art.webp";
 import { star2 } from "../../assets/icon";
 
 const Hero = () => {

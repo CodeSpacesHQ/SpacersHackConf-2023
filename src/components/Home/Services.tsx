@@ -1,8 +1,9 @@
 import { services } from "../../data/services";
 
 import AnimateWords from "../../config/textAnimation";
-// import notes from "../../assets/notes.png";
-import DraggableCanvas from "./DraggableRotatableImage";
+import notes from "../../assets/notes.webp";
+import notesSmall from "../../assets/notesSmall.webp";
+// import DraggableCanvas from "./DraggableRotatableImage";
 
 const Services = () => {
   return (
@@ -29,8 +30,17 @@ const Services = () => {
           ))}
         </div>
       </div>
-      <DraggableCanvas />
-      {/* <img src={notes} alt="stickynotes" className="w-full h-auto" /> */}
+      {/* <DraggableCanvas /> */}
+      <img
+        src={notes}
+        alt="stickynotes"
+        className="w-full h-auto max-sm:hidden"
+      />
+      <img
+        src={notesSmall}
+        alt="stickynotes"
+        className="w-full h-auto sm:hidden"
+      />
     </section>
   );
 };
