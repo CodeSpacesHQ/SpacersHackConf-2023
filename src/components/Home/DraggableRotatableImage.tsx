@@ -153,10 +153,10 @@ const Ball: React.FC<BallProps> = ({
     x: 0,
     y: 0,
   });
-  const isDraggingRef = useRef(false);
+
   const handleDragStart = (event: React.MouseEvent<HTMLImageElement>) => {
     event.preventDefault();
-    isDraggingRef.current = true;
+    setIsDragging(true);
     const offsetX =
       event.clientX - ballRef.current!.getBoundingClientRect().left;
     const offsetY =
@@ -165,11 +165,11 @@ const Ball: React.FC<BallProps> = ({
   };
 
   const handleDragEnd = () => {
-    isDraggingRef.current = false;
+    setIsDragging(false);
   };
 
   const handleDragMove = (event: MouseEvent) => {
-    if (isDraggingRef.current) {
+    if (isDragging) {
       const newMouseX = event.clientX;
       const newMouseY = event.clientY;
 
@@ -218,8 +218,6 @@ const Ball: React.FC<BallProps> = ({
   }, [isDragging, handleDragMove, handleDragEnd]);
 
   useEffect(() => {
-    // Ball movement and collision detection
-
     const intervalId = setInterval(() => {
       setBalls((prevBalls) => {
         const updatedBalls = [...prevBalls];
@@ -286,15 +284,7 @@ const Ball: React.FC<BallProps> = ({
     }, 1000 / 60);
 
     return () => clearInterval(intervalId);
-  }, [
-    containerHeight,
-    containerPadding,
-    index,
-    radius,
-    gravity,
-    setBalls,
-    isDragging,
-  ]);
+  }, [containerHeight, containerPadding, index, radius, gravity, setBalls]);
 
   return (
     <img
