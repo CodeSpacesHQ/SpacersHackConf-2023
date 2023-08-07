@@ -57,3 +57,23 @@
     transform: translateX(0);
   }
 }
+
+/* Add this CSS to your stylesheet */
+@keyframes fall {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(100%);
+    opacity: 1;
+  }
+}
+
+.raindrops-container {
+  display: flex;
+  justify-content: space-between;
+}
+.raindrop {
+  animation: fall 2s linear;
+}

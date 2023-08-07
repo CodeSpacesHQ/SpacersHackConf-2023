@@ -1,180 +1,315 @@
-// import React, { useRef, useState } from "react";
-// import { motion, useAnimation, useMotionValue } from "framer-motion";
+import React, { useRef, useState, useEffect } from "react";
 
-// import {
-//   first,
-//   second,
-//   third,
-//   four,
-//   five,
-//   six,
-//   seven,
-//   eight,
-//   nine,
-//   ten,
-//   eleven,
-//   twelve,
-// } from "../../assets/stickynotes";
+import {
+  first,
+  second,
+  third,
+  four,
+  five,
+  six,
+  seven,
+  eight,
+  nine,
+  ten,
+  eleven,
+  twelve,
+} from "../../assets/stickynotes";
 
-// const imagesArray = [
-//   first,
-//   second,
-//   third,
-//   four,
-//   five,
-//   six,
-//   seven,
-//   eight,
-//   nine,
-//   ten,
-//   eleven,
-//   twelve,
-// ];
+const imagesArray = [
+  first,
+  second,
+  third,
+  four,
+  five,
+  six,
+  seven,
+  eight,
+  nine,
+  ten,
+  eleven,
+  twelve,
+];
 
-// interface DraggableImage {
-//   src: string;
-//   alt: string;
-//   targetX: number;
-//   targetY: number;
-// }
+const DraggableCanvas: React.FC = () => {
+  const containerHeight = 599;
+  const [containerPadding, setContainerPadding] = useState(28); // Default padding value
 
-// const DraggableImages: React.FC = () => {
-//   const containerRef = useRef<HTMLDivElement>(null);
-//   const containerHeight = 600;
-//   const imageWidth = 270;
-//   const imageHeight = 200;
+  useEffect(() => {
+    const handleResize = () => {
+      // Define breakpoints for different screen sizes
+      const mobileBreakpoint = 640;
+      const desktopBreakpoint = 1024;
+      const largeScreenBreakpoint = 1280;
 
-//   const [images, setImages] = useState<DraggableImage[]>(() =>
-//     imagesArray.map((src, i) => ({
-//       src,
-//       alt: `Image ${i + 1}`,
-//       targetX: (i % 3) * (imageWidth + 20),
-//       targetY: i < 3 ? 0 : containerHeight - imageHeight,
-//     }))
-//   );
+      // Get the current window width
+      const screenWidth = window.innerWidth;
 
-//   const handleDragEnd = (index: number) => {
-//     const newRow = Math.floor(index / 3) - 1;
-//     const newRowY = containerHeight - (newRow + 1) * (imageHeight + 20);
-//     const newCol = index % 3 === 0 ? 1 : 0;
-//     const newColX = 1 * (imageWidth + 20);
+      // Set the padding based on the screen size
+      if (screenWidth < mobileBreakpoint) {
+        setContainerPadding(28); // Set padding for mobile screens
+      } else if (
+        screenWidth >= mobileBreakpoint &&
+        screenWidth < desktopBreakpoint
+      ) {
+        setContainerPadding(64); // Set padding for desktop screens
+      } else if (
+        screenWidth >= desktopBreakpoint &&
+        screenWidth < largeScreenBreakpoint
+      ) {
+        setContainerPadding(65); // Set padding for large screens
+      } else {
+        setContainerPadding(102); // Set padding for larger screens
+      }
+    };
 
-//     let targetX = images[index].targetX;
-//     let targetY = images[index].targetY;
+    // Call the handleResize function when the window is resized
+    window.addEventListener("resize", handleResize);
+    // Call the handleResize function initially to set the padding based on the initial screen size
+    handleResize();
 
-//     // Check for collisions with other images
-//     let collided = false;
+    // Clean up the event listener on unmount
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
-//     images.forEach((image, i) => {
-//       if (i !== index) {
-//         const rect = containerRef.current
-//           ?.querySelector(`#image-${i}`)
-//           ?.getBoundingClientRect();
+  const [balls, setBalls] = useState<
+    {
+      position: { x: number; y: number };
+      velocity: { x: number; y: number };
+      rotation: number; // New property to store the rotation of the ball
+    }[]
+  >([
+    { position: { x: 50, y: 50 }, velocity: { x: 1, y: 1 }, rotation: 0 },
+    { position: { x: 150, y: 100 }, velocity: { x: -2, y: -1 }, rotation: 0 },
+    { position: { x: 200, y: 200 }, velocity: { x: 0.5, y: -1 }, rotation: 0 },
+    { position: { x: 300, y: 300 }, velocity: { x: -1, y: 2 }, rotation: 0 },
+    { position: { x: 400, y: 400 }, velocity: { x: 2, y: -1 }, rotation: 0 },
+    { position: { x: 500, y: 100 }, velocity: { x: -1, y: 1 }, rotation: 0 },
+    { position: { x: 600, y: 200 }, velocity: { x: 1, y: -2 }, rotation: 0 },
+    { position: { x: 700, y: 300 }, velocity: { x: -2, y: 1 }, rotation: 0 },
+    { position: { x: 800, y: 400 }, velocity: { x: 1, y: -1 }, rotation: 0 },
+    { position: { x: 900, y: 100 }, velocity: { x: -1, y: 2 }, rotation: 0 },
+    { position: { x: 1000, y: 200 }, velocity: { x: 1, y: -2 }, rotation: 0 },
+    { position: { x: 1100, y: 300 }, velocity: { x: -2, y: 1 }, rotation: 0 },
+  ]);
 
-//         if (rect) {
-//           if (
-//             targetX + imageWidth + 20 > rect.left &&
-//             targetX < rect.right &&
-//             targetY + imageHeight + 20 > rect.top &&
-//             targetY < rect.bottom
-//           ) {
-//             collided = true;
-//             targetX = targetX + newColX;
-//             targetY = targetY;
-//           }
-//         }
-//       }
-//     });
+  return (
+    <div className="h-[599px] w-full overflow-hidden bg-gradient-to-b from-slate-50 to-slate-50 rounded-[28px] p-4 relative">
+      <div className="w-full h-full flex flex-wrap">
+        {balls.map((ball, index) => (
+          <Ball
+            key={index}
+            containerHeight={containerHeight}
+            containerPadding={containerPadding}
+            ball={ball}
+            index={index}
+            balls={balls}
+            setBalls={setBalls}
+          />
+        ))}
+      </div>
+    </div>
+  );
+};
 
-//     if (!collided) {
-//       if (targetX + newColX < window.innerWidth - imageWidth) {
-//         targetX = targetX + newColX;
-//       } else {
-//         targetX = 0;
-//         targetY = newRowY;
-//       }
-//     }
+interface BallProps {
+  containerHeight: number;
+  containerPadding: number;
+  ball: {
+    position: { x: number; y: number };
+    velocity: { x: number; y: number };
+    rotation: number;
+  };
+  index: number;
+  balls: {
+    position: { x: number; y: number };
+    velocity: { x: number; y: number };
+    rotation: number;
+  }[];
+  setBalls: React.Dispatch<
+    React.SetStateAction<
+      {
+        position: { x: number; y: number };
+        velocity: { x: number; y: number };
+        rotation: number;
+      }[]
+    >
+  >;
+}
 
-//     setImages((prevImages) =>
-//       prevImages.map((image, i) =>
-//         i === index ? { ...image, targetX, targetY } : image
-//       )
-//     );
-//   };
+const Ball: React.FC<BallProps> = ({
+  containerHeight,
+  containerPadding,
+  ball,
+  index,
+  setBalls,
+}) => {
+  const radius = 80;
+  const gravity = 0.2;
+  const rotationSpeed = 0.1;
 
-//   return (
-//     <div
-//       ref={containerRef}
-//       className="h-[599px] bg-gradient-to-b from-slate-50 to-slate-50 rounded-[28px] p-4 relative overflow-hidden"
-//       style={{
-//         display: "grid",
-//         gridTemplateColumns: "repeat(3, 270px)",
-//         gap: "20px",
-//       }}
-//     >
-//       {images.map(({ src, alt, targetX, targetY }, index) => (
-//         <DraggableImage
-//           key={index}
-//           src={src}
-//           alt={alt}
-//           targetX={targetX}
-//           targetY={targetY}
-//           onDragEnd={() => handleDragEnd(index)}
-//         />
-//       ))}
-//     </div>
-//   );
-// };
+  const ballRef = useRef<HTMLImageElement>(null);
+  const [isDragging, setIsDragging] = useState(false);
+  const [dragOffset, setDragOffset] = useState<{ x: number; y: number }>({
+    x: 0,
+    y: 0,
+  });
+  const isDraggingRef = useRef(false);
+  const handleDragStart = (event: React.MouseEvent<HTMLImageElement>) => {
+    event.preventDefault();
+    isDraggingRef.current = true;
+    const offsetX =
+      event.clientX - ballRef.current!.getBoundingClientRect().left;
+    const offsetY =
+      event.clientY - ballRef.current!.getBoundingClientRect().top;
+    setDragOffset({ x: offsetX, y: offsetY });
+  };
 
-// interface DraggableImageProps extends DraggableImage {
-//   onDragEnd: () => void;
-// }
+  const handleDragEnd = () => {
+    isDraggingRef.current = false;
+  };
 
-// const DraggableImage: React.FC<DraggableImageProps> = ({
-//   src,
-//   alt,
-//   targetX,
-//   targetY,
-//   onDragEnd,
-// }) => {
-//   const controls = useAnimation();
-//   const imageRef = useRef<HTMLImageElement>(null);
+  const handleDragMove = (event: MouseEvent) => {
+    if (isDraggingRef.current) {
+      const newMouseX = event.clientX;
+      const newMouseY = event.clientY;
 
-//   const handleDrag = (event: MouseEvent | TouchEvent, info: any) => {
-//     event.preventDefault();
+      setBalls((prevBalls) => {
+        const updatedBalls = [...prevBalls];
+        const ball = updatedBalls[index];
 
-//     // Calculate new position based on the initial target position and the drag distance
-//     const newX = targetX + info.offset.x;
-//     const newY = targetY + info.offset.y;
+        // Calculate the distance moved by the mouse since the drag started
+        const distanceX = newMouseX - (ball.position.x + dragOffset.x);
+        const distanceY = newMouseY - (ball.position.y + dragOffset.y);
 
-//     // Update the image position using framer-motion
-//     controls.start({ x: newX, y: newY });
-//   };
+        // Update the ball position based on the mouse movement
+        ball.position.x += distanceX;
+        ball.position.y += distanceY;
 
-//   return (
-//     <motion.div
-//       style={{ x: targetX, y: targetY, position: "relative", cursor: "grab" }}
-//       drag
-//       dragConstraints={{
-//         left: 0,
-//         top: 0,
-//         right: window.innerWidth - imageRef.current!.width,
-//         bottom: window.innerHeight - imageRef.current!.height,
-//       }}
-//       dragElastic={0.2}
-//       onDrag={handleDrag}
-//       onDragEnd={onDragEnd}
-//       id={`image-${targetX}-${targetY}`}
-//     >
-//       <img
-//         ref={imageRef}
-//         src={src}
-//         alt={alt}
-//         className="cursor-pointer w-[270px] h-auto"
-//         draggable="false"
-//       />
-//     </motion.div>
-//   );
-// };
+        // Update the rotation based on the mouse movement
+        const newRotation = Math.atan2(distanceY, distanceX) * (180 / Math.PI);
+        const rotationDiff = newRotation - ball.rotation;
 
-// export default DraggableImages;
+        // Smooth the rotation update
+        ball.rotation += rotationDiff * rotationSpeed;
+
+        // Update the drag offset to the current mouse position
+        setDragOffset({
+          x: newMouseX - ball.position.x,
+          y: newMouseY - ball.position.y,
+        });
+
+        return updatedBalls;
+      });
+    }
+  };
+
+  useEffect(() => {
+    if (isDragging) {
+      document.addEventListener("mousemove", handleDragMove);
+      document.addEventListener("mouseup", handleDragEnd);
+    } else {
+      document.removeEventListener("mousemove", handleDragMove);
+      document.removeEventListener("mouseup", handleDragEnd);
+    }
+    return () => {
+      document.removeEventListener("mousemove", handleDragMove);
+      document.removeEventListener("mouseup", handleDragEnd);
+    };
+  }, [isDragging, handleDragMove, handleDragEnd]);
+
+  useEffect(() => {
+    // Ball movement and collision detection
+
+    const intervalId = setInterval(() => {
+      setBalls((prevBalls) => {
+        const updatedBalls = [...prevBalls];
+        const ball = updatedBalls[index];
+
+        if (!isDragging && ball.velocity.x === 0 && ball.velocity.y === 0) {
+          const desiredX = containerPadding + (index % 4) * (radius * 4);
+          const desiredY =
+            containerHeight - radius - Math.floor(index / 4) * (radius * 4);
+
+          ball.position.x += (desiredX - ball.position.x) * 0.2;
+          ball.position.y += (desiredY - ball.position.y) * 0.2;
+        } else {
+          ball.velocity.y += gravity;
+          ball.position.x += ball.velocity.x;
+          ball.position.y += ball.velocity.y;
+
+          const containerBottom = containerHeight - radius;
+          const containerWidth = window.innerWidth - containerPadding * 2;
+          const containerLeft = radius;
+          const containerRight = containerWidth + radius;
+          const bounceFactor = 0.9;
+
+          // Check for collisions with container boundaries (top, bottom, left, right)
+          if (ball.position.y >= containerBottom) {
+            ball.position.y = containerBottom;
+            ball.velocity.y = -ball.velocity.y * bounceFactor;
+          } else if (ball.position.y <= radius) {
+            ball.position.y = radius;
+            ball.velocity.y = -ball.velocity.y * bounceFactor;
+          }
+
+          if (ball.position.x >= containerRight) {
+            ball.position.x = containerRight;
+            ball.velocity.x = -Math.abs(ball.velocity.x) * bounceFactor;
+          } else if (ball.position.x <= containerLeft) {
+            ball.position.x = containerLeft;
+            ball.velocity.x = Math.abs(ball.velocity.x) * bounceFactor;
+          }
+
+          // Check for collisions with other balls
+          for (let i = 0; i < updatedBalls.length; i++) {
+            if (i !== index) {
+              const otherBall = updatedBalls[i];
+              const dx = ball.position.x - otherBall.position.x;
+              const dy = ball.position.y - otherBall.position.y;
+              const distance = Math.sqrt(dx * dx + dy * dy);
+
+              if (distance < radius * 2) {
+                const normalX = dx / distance;
+                const normalY = dy / distance;
+                const dotProduct =
+                  ball.velocity.x * normalX + ball.velocity.y * normalY;
+
+                ball.velocity.x -= 2 * dotProduct * normalX * bounceFactor;
+                ball.velocity.y -= 2 * dotProduct * normalY * bounceFactor;
+              }
+            }
+          }
+        }
+
+        return updatedBalls;
+      });
+    }, 1000 / 60);
+
+    return () => clearInterval(intervalId);
+  }, [
+    containerHeight,
+    containerPadding,
+    index,
+    radius,
+    gravity,
+    setBalls,
+    isDragging,
+  ]);
+
+  return (
+    <img
+      ref={ballRef}
+      src={imagesArray[index % imagesArray.length]}
+      alt={`Ball ${index + 1}`}
+      className="w-[270px] h-auto rounded-full absolute cursor-grab"
+      onMouseDown={handleDragStart}
+      style={{
+        left: ball.position.x - radius,
+        top: ball.position.y - radius,
+        transform: `rotate(${ball.rotation}deg)`,
+      }}
+    />
+  );
+};
+
+export default DraggableCanvas;
