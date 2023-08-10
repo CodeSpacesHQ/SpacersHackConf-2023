@@ -123,7 +123,7 @@ const Header: React.FC = () => {
           </div>
           {/* Register Button */}
           <a
-            href="https://forms.gle/ZztYnDQmu8MMTPdE9"
+            href="https://eventprime.co/e/spacers-hack-conf-2023"
             target="_blank"
             rel="noopener noreferrer"
             className="hidden transition-all donate lg:block hover:scale-110 z-20"
