@@ -206,7 +206,7 @@ const Header: React.FC = () => {
           {/* Register Button */}
           <a
             href="#"
-            target="https://forms.gle/ZztYnDQmu8MMTPdE9"
+            target="https://eventprime.co/e/spacers-hack-conf-2023"
             rel="noopener noreferrer"
             className="absolute w-full transition-all donate bottom-10 hover:scale-110 px-7 sm:px-[62px]"
           >
