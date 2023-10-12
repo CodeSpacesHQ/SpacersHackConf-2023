@@ -18,7 +18,7 @@ const Header: React.FC = () => {
 
   useEffect(() => {
     // Check the pathname and set the logo and text color accordingly
-    if (pathname === "/speakers") {
+    if (pathname === "/speakers" || pathname === "/schedule") {
       setLogo(logoColoured);
       setTextColor("#070F18");
       setButtonColor("#fff");
@@ -107,9 +107,10 @@ const Header: React.FC = () => {
                         : "no-underline"
                     } hover:underline`}
                   >
-                    {item.name === "Contact" ? (
+                    {item.name === "Contact" ||
+                    item.name === "Partner With Us" ? (
                       <a href={item.where}>{item.name}</a>
-                    ) : item.name === "Sponsors" || item.name === "Agenda" ? (
+                    ) : item.name === "Sponsors" ? (
                       <Link to={item.where} smooth={true} duration={500}>
                         {item.name}
                       </Link>
@@ -168,9 +169,10 @@ const Header: React.FC = () => {
                 } hover:underline`}
               >
                 <span>
-                  {item.name === "Contact" ? (
+                  {item.name === "Contact" ||
+                  item.name === "Partner With Us" ? (
                     <a href={item.where}>{item.name}</a>
-                  ) : item.name === "Sponsors" || item.name === "Agenda" ? (
+                  ) : item.name === "Sponsors" ? (
                     <Link
                       to={item.where}
                       onClick={() => {

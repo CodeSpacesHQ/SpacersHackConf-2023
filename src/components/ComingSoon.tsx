@@ -2,7 +2,7 @@ import bracket from "../assets/bracket.svg";
 
 const ComingSoon = () => {
   return (
-    <div className="relative h-[60px] bg-indigo-500 w-full mb-2 overflow-x-clip sm:mb-9 lg:mb-14">
+    <div className="relative h-[60px] bg-indigo-500 w-full overflow-x-clip">
       <div className="text-animation-wrapper">
         <div className="text-animation comingSoon1">
           <p className="flex items-center text-center text-white text-[32px] font-bold uppercase leading-loose font-gelion">

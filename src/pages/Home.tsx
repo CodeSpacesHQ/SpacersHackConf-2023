@@ -22,7 +22,9 @@ export const Home = () => {
       <Hero />
       <Goals />
       <Services />
+
       <ComingSoon />
+      <div className="mt-2 sm:mt-9 lg:mt-14"></div>
       <Sponsors />
       <Faq />
     </>

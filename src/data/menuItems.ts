@@ -7,8 +7,8 @@ interface MenuItems {
 export const menuItems: MenuItems[] = [
   {
     key: 1,
-    name: "Agenda",
-    where: "#",
+    name: "Schedule",
+    where: "/schedule",
   },
   {
     key: 2,
@@ -22,6 +22,11 @@ export const menuItems: MenuItems[] = [
   },
   {
     key: 4,
+    name: "Partner With Us",
+    where: "#",
+  },
+  {
+    key: 5,
     name: "Contact",
     where: "mailto:hello@codespaceafrica.com",
   },

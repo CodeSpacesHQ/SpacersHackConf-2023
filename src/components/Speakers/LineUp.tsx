@@ -37,7 +37,7 @@ const LineUp: React.FC = () => {
   };
 
   return (
-    <section className="relative h-screen bg-white px-[29px] sm:px-[64px] lg:px-[69.83px] xl:px-[102px] max-w-[1500px] mx-auto pt-20">
+    <section className="relative bg-white px-[29px] sm:px-[64px] lg:px-[69.83px] xl:px-[102px] max-w-[1500px] mx-auto pt-20">
       <div className="flex sm:gap-8 sm:justify-start justify-between border-b-[#C2C2F0] border-b-[0.2px] w-full">
         {typeSpeakers.map((item, index) => {
           return (
@@ -58,12 +58,12 @@ const LineUp: React.FC = () => {
           );
         })}
       </div>
-      <div className="flex justify-between w-full mt-[90px] space-x-6">
+      <div className="flex justify-between max-lg:flex-wrap w-full mt-[90px] gap-y-6 gap-x-6">
         {items.map((item, index) => (
           <motion.div
             {...zoomAnimation()}
             key={index}
-            className="w-full max-w-[397px] h-[394px] bg-zinc-300 rounded-[18px]"
+            className="w-full max-w-[300px] lg:max-w-[397px] h-[394px] bg-zinc-300 rounded-[18px]"
           />
         ))}
       </div>

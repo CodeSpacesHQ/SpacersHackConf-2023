@@ -2,10 +2,10 @@ import { useEffect } from "react";
 import { ThemeColor, updateThemeColor } from "../utils/Theme";
 import Sponsors from "../components/Sponsors";
 import ComingSoon from "../components/ComingSoon";
-import Hero from "../components/Speakers/Hero";
-import LineUp from "../components/Speakers/LineUp";
+import Hero from "../components/Schedule/Hero";
+import Calendar from "../components/Schedule/Calendar";
 
-export const Speakers = () => {
+export const Schedule = () => {
   useEffect(() => {
     const themeColor: ThemeColor = "#F8F8FD"; // Set the theme color type explicitly
 
@@ -18,11 +18,8 @@ export const Speakers = () => {
   return (
     <>
       <Hero />
-      <LineUp />
-      <div className="mb-2 sm:mb-9 lg:mb-14"></div>
       <ComingSoon />
-      <div className="mt-2 sm:mt-9 lg:mt-14"></div>
-      <Sponsors />
+      <Calendar />
     </>
   );
 };
