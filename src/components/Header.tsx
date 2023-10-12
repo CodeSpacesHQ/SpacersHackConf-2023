@@ -174,10 +174,12 @@ const Header: React.FC = () => {
                     <Link
                       to={item.where}
                       onClick={() => {
-                        setNavOpen(false);
-                        menuHeight.set(navOpen ? 0 : 0);
-                        setIsAnimating(false);
-                        setAnimationKey((prevKey) => prevKey + 1);
+                        setTimeout(() => {
+                          setNavOpen(false);
+                          menuHeight.set(navOpen ? 0 : 0);
+                          setIsAnimating(false);
+                          setAnimationKey((prevKey) => prevKey + 1);
+                        }, 2000);
                       }}
                       smooth={true}
                       duration={500}
