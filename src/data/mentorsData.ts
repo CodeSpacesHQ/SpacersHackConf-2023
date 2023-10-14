@@ -1,15 +1,63 @@
 interface MentorsItems {
   img: string;
+  name: string;
+  title: string;
+  about: string;
 }
 
 export const Mentors: MentorsItems[] = [
   {
-    img: "Mentors",
+    img: "",
+    name: "",
+    title: "",
+    about: "",
   },
   {
-    img: "Mentors",
+    img: "",
+    name: "",
+    title: "",
+    about: "",
   },
   {
-    img: "Mentors",
+    img: "",
+    name: "",
+    title: "",
+    about: "",
+  },
+  {
+    img: "",
+    name: "",
+    title: "",
+    about: "",
+  },
+  {
+    img: "",
+    name: "",
+    title: "",
+    about: "",
+  },
+  {
+    img: "",
+    name: "",
+    title: "",
+    about: "",
+  },
+  {
+    img: "",
+    name: "",
+    title: "",
+    about: "",
+  },
+  {
+    img: "",
+    name: "",
+    title: "",
+    about: "",
+  },
+  {
+    img: "",
+    name: "",
+    title: "",
+    about: "",
   },
 ];

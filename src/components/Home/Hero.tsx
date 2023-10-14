@@ -1,3 +1,5 @@
+import { NavLink } from "react-router-dom";
+
 import splash from "../../assets/heroSplash.webp";
 import splashBlue from "../../assets/splash.webp";
 import art from "../../assets/art.webp";
@@ -42,14 +44,14 @@ const Hero = () => {
                   REGISTER FOR HACKATHON
                 </button>
               </a>
-              <a href="#" target="_blank">
+              <NavLink to={"/schedule"}>
                 <button
                   className="hover:bg-indigo-500 bg-[#fefefe] hover:border-indigo-500 hover:text-[#fefefe]
                rounded-[38px] w-[282px] py-5 text-center font-poppins text-indigo-500 text-[16px] font-semibold"
                 >
-                  BECOME A SPONSOR
+                  VIEW SCHEDULE
                 </button>
-              </a>
+              </NavLink>
             </div>
           </div>
           <a

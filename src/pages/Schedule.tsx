@@ -1,6 +1,5 @@
 import { useEffect } from "react";
 import { ThemeColor, updateThemeColor } from "../utils/Theme";
-import Sponsors from "../components/Sponsors";
 import ComingSoon from "../components/ComingSoon";
 import Hero from "../components/Schedule/Hero";
 import Calendar from "../components/Schedule/Calendar";

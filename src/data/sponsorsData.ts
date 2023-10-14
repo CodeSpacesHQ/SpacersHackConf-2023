@@ -1,15 +1,63 @@
 interface SponsorsItems {
   img: string;
+  name: string;
+  title: string;
+  about: string;
 }
 
 export const Sponsors: SponsorsItems[] = [
   {
-    img: "Sponsors",
+    img: "",
+    name: "",
+    title: "",
+    about: "",
   },
   {
-    img: "Sponsors",
+    img: "",
+    name: "",
+    title: "",
+    about: "",
   },
   {
-    img: "Sponsors",
+    img: "",
+    name: "",
+    title: "",
+    about: "",
+  },
+  {
+    img: "",
+    name: "",
+    title: "",
+    about: "",
+  },
+  {
+    img: "",
+    name: "",
+    title: "",
+    about: "",
+  },
+  {
+    img: "",
+    name: "",
+    title: "",
+    about: "",
+  },
+  {
+    img: "",
+    name: "",
+    title: "",
+    about: "",
+  },
+  {
+    img: "",
+    name: "",
+    title: "",
+    about: "",
+  },
+  {
+    img: "",
+    name: "",
+    title: "",
+    about: "",
   },
 ];

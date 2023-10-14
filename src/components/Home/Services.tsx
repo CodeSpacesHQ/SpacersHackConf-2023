@@ -1,4 +1,5 @@
 import { services } from "../../data/services";
+import Speaker from "./Speaker";
 
 import AnimateWords from "../../config/textAnimation";
 import notes from "../../assets/notes.webp";
@@ -30,6 +31,7 @@ const Services = () => {
           ))}
         </div>
       </div>
+      <Speaker />
       {/* <DraggableCanvas /> */}
       <img
         src={notes}

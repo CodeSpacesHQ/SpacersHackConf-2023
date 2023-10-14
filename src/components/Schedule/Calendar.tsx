@@ -18,7 +18,7 @@ const Calendar = () => {
           <p className="text-black text-sm sm:text-[28px] sm:leading-9 font-semibold font-gelion uppercase sm:tracking-[3.36px]">
             Opening Ceremony{" "}
             <a
-              href="#"
+              href="https://docs.google.com/document/d/1GxDq9TkP_fBtx06fRxpnC-ylyWBAX52wpPqYfig8cR0/edit#heading=h.hfo6ww6x9zp2"
               className="underline hover:no-underline text-indigo-500"
             >
               click here for more details

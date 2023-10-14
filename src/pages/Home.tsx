@@ -6,6 +6,8 @@ import ComingSoon from "../components/ComingSoon";
 import Hero from "../components/Home/Hero";
 import Goals from "../components/Home/Goals";
 import Services from "../components/Home/Services";
+import Forward from "../components/Home/Forward";
+import Speaker from "../components/Home/Speaker";
 
 export const Home = () => {
   useEffect(() => {
@@ -21,8 +23,8 @@ export const Home = () => {
     <>
       <Hero />
       <Goals />
+      <Forward />
       <Services />
-
       <ComingSoon />
       <div className="mt-2 sm:mt-9 lg:mt-14"></div>
       <Sponsors />

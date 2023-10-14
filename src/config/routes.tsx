@@ -1,6 +1,6 @@
 import { RouteObject, useRoutes } from "react-router";
 import { SharedLayout } from "../components/layout/SharedLayout";
-// import ScrollToTop from "../components/ScrollToTop";
+import ScrollToTop from "../components/ScrollToTop";
 
 import { Home, Speakers, Schedule } from "../pages";
 
@@ -11,7 +11,7 @@ export function Routes() {
       element: (
         <>
           <SharedLayout />
-          {/* <ScrollToTop /> */}
+          <ScrollToTop />
         </>
       ),
       children: [
