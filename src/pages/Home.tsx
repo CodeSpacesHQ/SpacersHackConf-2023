@@ -7,7 +7,6 @@ import Hero from "../components/Home/Hero";
 import Goals from "../components/Home/Goals";
 import Services from "../components/Home/Services";
 import Forward from "../components/Home/Forward";
-import Speaker from "../components/Home/Speaker";
 
 export const Home = () => {
   useEffect(() => {
