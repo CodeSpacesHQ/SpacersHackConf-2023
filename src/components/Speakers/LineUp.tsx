@@ -63,7 +63,7 @@ const LineUp: React.FC = () => {
           <motion.div
             {...zoomAnimation()}
             key={index}
-            className="w-full relative cursor-pointer group sm:w-[48%] max-h-[364px] xl:max-h-[330px] overflow-hidden xl:w-[31%] bg-zinc-300 rounded-[18px]"
+            className="w-full relative cursor-pointer group sm:w-[48%] max-md:h-[352px] max-h-[364px] xl:max-h-[330px] overflow-hidden xl:w-[31%] bg-zinc-300 rounded-[18px]"
           >
             <img
               src={item.img}
@@ -81,7 +81,7 @@ const LineUp: React.FC = () => {
                 <h3 className="text-center text-xl font-bold font-dm-sans text-[moccasin] mt-[20px]">
                   {item.name}
                 </h3>
-                <p className="text-center uppercase text-base font-semibold font-dm-sans text-white">
+                <p className="text-base font-semibold text-center text-white uppercase font-dm-sans">
                   {item.title}
                 </p>
                 <p className="text-center text-sm mt-[16px] font-normal font-poppins text-white sm:mt-[20px]">
